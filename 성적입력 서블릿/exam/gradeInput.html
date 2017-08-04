@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>성적 입력</title>
+<script type="text/javascript">
+	window.onload = function() {
+		frm.num.focus(); //창 띄우면 커서가 번호에 있도록
+		document.getElementById("register").onclick = function() { //입력값에 대한 1차적 검증
+			var regExp = /^[0-9]+$/;
+			if (!frm.num.value.match(regExp)) {
+				frm.num.focus();
+				alert("번호는 숫자만 입력 가능합니다.");
+				return false;
+			} else if (!frm.kor.value.match(regExp)) {
+				frm.kor.focus();
+				alert("점수는 숫자만 입력 가능합니다.");
+				return false;
+			} else if (!frm.eng.value.match(regExp)) {
+				frm.eng.focus();
+				alert("점수는 숫자만 입력 가능합니다.");
+				return false;
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<h2>성적입력</h2>
+	<p />
+	<form action="../reportCard" method="post" name="frm">  <!-- post로 전송 -->
+		<div>
+			<label for="num">번호</label> <input type="number" name="num" id="num">
+			<br>
+				<label for="name">이름</label>
+				<input type="text" name="name" id="name"> 
+			<br>
+				<label for="kor">국어</label> 
+				<input type="number" name="kor" id="kor"> 
+			<br> 
+				<label for="eng">영어</label>
+				<input type="number" name="eng" id="eng">
+			<br>
+				<p style="text-align: left; margin-left: 40px;">
+				<input type="submit" value="등록" id="register">
+			</p>
+		</div>
+	</form>
+</body>
+</html>
